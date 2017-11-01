@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mini Portfolio</title>
+        <meta charset = "utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Megrim" rel="stylesheet">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style media = "Screen" type="text/css">
+            body{
+                width:100%;
+                height:100%;
+                margin:0 auto;
+            }
+            
+            *{
+                font-family:'megrim';
+            }
+            
+            img{
+                width:130px;
+                height:130px;
+                margin-top:0.8rem;
+            }
+            
+            label{
+                display:block;
+                font-size:2rem;
+                text-align: center;
+                margin-top:3rem;
+            }
+            
+            input{
+                display:block;
+                margin:0 auto;
+                width:15rem;
+                height:2.5rem;
+                font-size:1.05rem;
+                padding-left:0.5rem;
+                margin-top:0.75rem;
+            }
+            
+            h1{
+                width:30rem;
+                margin:0 auto;
+                margin-top:1rem;
+                font-size:2.7rem;
+                text-align: center;
+            }
+            
+            h1 div{
+                display:inline-block;
+                vertical-align: top;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "app">
+            <label for = "data">TYPE HERE!</label>
+            <input type = "text" v-model = "inputData" id = "data" placeholder="Type your skill.">
+            
+            <template v-if = "inputData">
+                <h1>
+                    <div id = "text">
+                        yunjae<br>
+                        can<br>
+                        do
+                    </div>
+                    <div>
+                        <span v-show = "inputData == 'html' || inputData == 'HTML'">
+                            <img src = "img/html.png">
+                        </span>
+                        <span v-show = "inputData == 'css' || inputData == 'CSS'">
+                            <img src = "img/css.jpg">
+                        </span>
+                        <span v-show = "inputData == 'js' || inputData == 'JS'">
+                            <img src = "img/js.jpeg">
+                        </span>
+                        <span v-show = "inputData == 'python' || inputData == 'PYTHON'">
+                            <img src = "img/python.png" style = "margin-top:0.85rem;">
+                        </span>
+                        <span v-show = "inputData == 'ruby' || inputData == 'RUBY'">
+                            <img src = "img/ruby.png">
+                        </span>
+                    </div>
+                </h1>
+            </template>
+<!--
+            <pre>
+                {{ $data }}
+            </pre>
+-->
+        </div>
+        <script type = "text/javascript">
+            new Vue({
+                el : '#app',
+                data : {
+                    inputData : ''
+                }
+            });
+        </script>
+    </body>
+</html>
