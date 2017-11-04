@@ -19,7 +19,7 @@ Vue.js는 React와 같이 View에 최적화된 프레임워크로써 다양한 �
 <br><br><br>
 <strong>알아두면 좋을 것</strong>
 <li>Vuex</li>
-<li><a href = "https://github.com/vuejs/vue-devtools">vue-devtools</a></li>
+<li><a href = "https://github.com/vuejs/vue-devtools" target = "_blank">vue-devtools</a></li>
 <br><br>
 
 <h2>아키텍쳐(Architecture)</h2>

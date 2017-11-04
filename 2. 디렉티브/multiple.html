@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>구구단</title>
+        <meta charset="utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style>
+            body{
+                width:100%;
+                height:100%;
+                margin:0 auto;
+            }
+
+            h1{
+                text-align: center;
+                margin-bottom:2rem;
+            }
+
+            li{
+                list-style: none;
+                width:80%;
+                height:2.5rem;
+                border-radius: 7.5px;
+                box-shadow:0 0 4px darkgray;
+                margin:0 auto;
+                text-align: center;
+                letter-spacing: 0.5px;
+                word-spacing: 2px;
+                margin-bottom:1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "app">
+            <h1> {{text}} </h1>
+            <ul>
+                <li v-for = "i in 9">
+                    {{i}} times {{i}} equals {{i * i}}.
+                </li>
+            </ul>
+        </div>
+        <script type = "text/javascript">
+            new Vue({
+                el : '#app',
+                data : {
+                    text : "구구단 예제"
+                }
+            });
+        </script>
+    </body>
+</html>
