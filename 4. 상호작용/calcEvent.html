@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>calcEvent</title>
+        <meta charset="utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style>
+            html, body{
+                width:100%;
+                height:100%;
+                margin:0;
+                padding:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "app">
+            <form>
+                <input v-model.number = "a">
+                <select v-model = "operator">
+                    <option>+</option>
+                    <option>-</option>
+                    <option>*</option>
+                    <option>/</option>
+                </select>
+
+                <input v-model.number = "b">
+                <button type = "submit" @click = "calculate">
+                    Calculate
+                </button>
+            </form>
+            <h2>결과 : {{c}}</h2>
+        </div>
+
+        <script type = "text/javascript">
+            new Vue({
+                el : '#app',
+                data : {
+                    a : 1,
+                    b : 2,
+                    c : null,
+                    operator : "+"
+                },
+                methods : {
+                    calculate : function(e){
+                        e.preventDefault();
+                        switch(this.operator){
+                            case "+" :
+                                this.c = this.a + this.b
+                                break;
+                            case "-" :
+                                this.c = this.a - this.b
+                                break;
+                            case "*" :
+                                this.c = this.a * this.b
+                                break;
+                            case "/" :
+                                this.c = this.a / this.b
+                                break;
+                        }
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
