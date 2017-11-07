@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>arrRender</title>
+        <meta charset="utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style media = "screen">
+            html, body{
+                width:100%;
+                height:100%;
+                margin:0;
+                padding:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "app">
+            <h1 v-for = "(mes, index) in message"> {{index}}, {{mes}} </h1>
+        </div>
+
+        <script type = "text/javascript">
+            new Vue({
+                el : '#app',
+                data : {
+                    message : [
+                        "Hello",
+                        "My name is",
+                        "Yunjae"
+                    ]
+                }
+            })
+        </script>
+    </body>
+</html>
