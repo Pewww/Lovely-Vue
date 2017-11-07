@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>3장 연습문제</title>
+        <meta charset = "utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style>
+            body{
+                width:100%;
+                height:100%;
+                margin:0 auto;
+                overflow-y:hidden;
+            }
+
+            li{
+                list-style: none;
+                width:80%;
+                font-size:1.1rem;
+                border-radius: 50px;
+                margin:0 auto;
+                text-align: center;
+                margin-bottom:2rem;
+                box-shadow: 0 0 4px darkgray;
+                padding:1.4rem;
+            }
+
+            li:nth-of-type(1){
+                margin-top:3rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "container">
+            <ul>
+                <li v-for = "(value, key, index6) in infos">
+                    {{index}} : {{key}} = {{value}}
+                </li>
+            </ul>
+        </div>
+        <script type = "text/javascript">
+            new Vue({
+                el : '#container',
+                data : {
+                    infos : {
+                        name : "정윤재",
+                        height : '185cm',
+                        weight : '70kg',
+                        eyeColor : 'brown or black',
+                        favoriteFood : '스시'
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
