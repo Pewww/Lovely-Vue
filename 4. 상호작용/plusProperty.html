@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>계산된 프로퍼티2</title>
+        <meta charset="utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style>
+            html, body{
+                width:100%;
+                height:100%;
+                margin:0;
+                padding:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class = "container">
+            <h1>Enter 2 numbers to calculate their sum.</h1>
+            <form>
+                <input v-model.number = "a">
+                +
+                <input v-model.number = "b">
+            </form>
+            <h2>Result : {{c}}</h2>
+        </div>
+        <script type="text/javascript">
+            new Vue({
+                el : '.container',
+                data : {
+                    a : 10,
+                    b : 20
+                },
+                computed : {
+                    c : function() {
+                        return this.a + this.b;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

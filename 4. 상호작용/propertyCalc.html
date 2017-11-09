@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>심플 계산기</title>
+        <meta charset="utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style>
+            html, body{
+                width:100%;
+                height:100%;
+                margin:0;
+                padding:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "app">
+            <h1>Type 2 numbers and choose operation.</h1>
+            <input v-model.number = "a">
+            <select v-model = "operator">
+                <option>+</option>
+                <option>-</option>
+                <option>*</option>
+                <option>/</option>
+            </select>
+            <input v-model.number = "b">
+
+            <h2> Result : {{c}}</h2>
+        </div>
+
+        <script type = "text/javascript">
+            new Vue({
+                el : '#app',
+                data : {
+                    a : 10,
+                    b : 10,
+                    operator : '+'
+                },
+                computed : {
+                    c : function() {
+                        switch(this.operator){
+                            case '+' :
+                            return this.a + this.b
+                            
+                            case "-" :
+                            return this.a - this.b
+
+                            case "*" :
+                            return this.a * this.b
+
+                            case "/" :
+                            return this.a / this.b
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

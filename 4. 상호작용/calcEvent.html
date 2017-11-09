@@ -24,12 +24,13 @@
                     <option>/</option>
                 </select>
 
-                <input v-model.number = "b">
-                <button type = "submit" @click = "calculate">
+                <input v-model.number = "b" @keyup.13 = "calculate">
+                <button @click.prevent = "calculate" type = "submit">
                     Calculate
                 </button>
+
+                <h2 v-model = "">결과 : {{c}}</h2>
             </form>
-            <h2>결과 : {{c}}</h2>
         </div>
 
         <script type = "text/javascript">
@@ -39,11 +40,11 @@
                     a : 1,
                     b : 2,
                     c : null,
-                    operator : "+"
+                    operator : '+'
                 },
                 methods : {
                     calculate : function(e){
-                        e.preventDefault();
+                        //e.preventDefault();
                         switch(this.operator){
                             case "+" :
                                 this.c = this.a + this.b
@@ -60,7 +61,7 @@
                         }
                     }
                 }
-            });
+            })
         </script>
     </body>
 </html>
