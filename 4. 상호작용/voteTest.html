@@ -1,0 +1,118 @@
+<html>  
+    <head>
+        <title>Vote 연습문제</title>
+        <meta charset="utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style>
+            html, body{
+                width:100%;
+                height:100%;
+                margin:0;
+                padding:0;
+            }
+
+            h1{
+                text-align: center;
+            }
+
+            ul{
+                list-style: none;
+            }
+
+            li{
+                width:80%;
+                height:2.8rem;
+                box-shadow: 0 0 4px darkgray;
+                border-radius: 5px;
+                margin:0 auto;
+                margin-top:3rem;
+                display:flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            button{
+                border:0;
+                background-color:white;
+                border:1px solid darkgray;
+                padding:0.5rem 2rem;
+                margin-left:1rem;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            input{
+                display:block;
+                margin:0 auto;
+                width:15rem;
+                height:2.5rem;
+                text-align: center;
+                border-radius: 7.5px;
+                border:2px solid #c6c6c6;
+            }
+
+            h2{
+                text-transform: uppercase;
+                text-align: center;
+                color:#292929;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "app">
+            <h1>People of Vue</h1>
+            <ul>
+                <li v-for = "mayor in Mayor">
+                    {{mayor.name}} {{mayor.votes}}
+                    <button @click = "mayor.votes++">Vote</button>
+                </li>
+            </ul>
+
+            <input @keyup.enter = "clear" placeholder="텍스트 입력 후 엔터치면 삭제">
+            <h2>Out mayor is {{mayor.name}}</h2>
+        </div>
+        <script type = "text/javascript">
+            new Vue({
+                el : '#app',
+                data : {
+                    Mayor : [
+                        {
+                            name : "Mr.Black",
+                            votes : 0
+                        },
+                        {
+                            name : "Mr.Pink",
+                            votes : 0
+                        },
+                        {
+                            name : "Mr.White",
+                            votes : 0
+                        },
+                        {
+                            name : "Mr.Brown",
+                            votes : 0
+                        }
+                    ]
+                },
+                methods : {
+                    clear : function(){
+                        this.Mayor = this.Mayor.map(function (mayor) {
+                            mayor.votes = 100;
+                            return mayor;
+                        })
+                    }
+                },
+                computed : {
+                    mayor : function(){
+                        let voteSort = this.Mayor.sort(function (a, b) {
+                            return b.votes - a.votes;
+                        });
+
+                        return voteSort[0];
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

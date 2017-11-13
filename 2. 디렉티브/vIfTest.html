@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>v-if 테스트</title>
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <meta charset="utf-8">
+        <style>
+            html, body{
+                width:100%;
+                height:100%;
+                margin:0;
+                padding:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "app">
+            <h1 v-if = "value > 5">value가 5보다 크군요!</h1>
+            <input v-model.number = "value">
+        </div>
+
+        <script>
+            new Vue({
+                el : '#app',
+                data : {
+                    value : 6
+                }
+            })
+        </script>
+    </body>
+</html>
