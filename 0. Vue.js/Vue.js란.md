@@ -64,3 +64,6 @@ View Model이 <strong>생성되는</strong> 순간부터 생명주기, 즉 Life 
 <b>참고 사진</b><br><br>
 <img src = "imgs/vue life cycle.png">
 
+
+<br><br>
+(아직_설명은_미완성임_이점_양해_부탁)
