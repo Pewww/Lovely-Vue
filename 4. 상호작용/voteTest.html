@@ -61,7 +61,7 @@
     </head>
     <body>
         <div id = "app">
-            <h1>People of Vue</h1>
+            <h1>제 17대 선거의 날</h1>
             <ul>
                 <li v-for = "mayor in Mayor">
                     {{mayor.name}} {{mayor.votes}}
@@ -70,7 +70,7 @@
             </ul>
 
             <input @keyup.enter = "clear" placeholder="텍스트 입력 후 엔터치면 삭제">
-            <h2>Out mayor is {{mayor.name}}</h2>
+            <h2> 선출된 17대 대통령: {{mayor.name}}</h2>
         </div>
         <script type = "text/javascript">
             new Vue({
@@ -78,38 +78,37 @@
                 data : {
                     Mayor : [
                         {
-                            name : "Mr.Black",
+                            name : "윤재",
                             votes : 0
                         },
                         {
-                            name : "Mr.Pink",
+                            name : "짱구",
                             votes : 0
                         },
                         {
-                            name : "Mr.White",
+                            name : "철수",
                             votes : 0
                         },
                         {
-                            name : "Mr.Brown",
+                            name : "유리",
                             votes : 0
                         }
                     ]
                 },
-                methods : {
-                    clear : function(){
-                        this.Mayor = this.Mayor.map(function (mayor) {
-                            mayor.votes = 100;
-                            return mayor;
-                        })
-                    }
-                },
                 computed : {
-                    mayor : function(){
-                        let voteSort = this.Mayor.sort(function (a, b) {
+                    mayor : function() {
+                        let voteResult = this.Mayor.sort(function(a, b){
                             return b.votes - a.votes;
                         });
-
-                        return voteSort[0];
+                        return voteResult[0];
+                    }
+                },
+                methods: {
+                    clear : function() {
+                        this.Mayor = this.Mayor.map(function(getVal) {
+                            getVal.votes = 0;
+                            return getVal;
+                        });
                     }
                 }
             });
