@@ -1,0 +1,37 @@
+<html>  
+    <head>
+        <title>listRendering Example</title>
+        <meta charset = "utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style>
+            html, body{
+                width:100%;
+                height:100%;
+                margin:0;
+                padding:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "app">
+            <ul>
+                <li v-for = "(item, index) in items">
+                    {{ParentMessage}} - {{index}} - {{item.message}}
+                </li>
+            </ul>
+        </div>
+        <script type = "text/javscript">
+            new Vue({
+                el : '#app',
+                data : {
+                    ParentMessage : 'Parent',
+                    items : [
+                        {message : "Hello"},
+                        {message : "World!"}
+                    ]
+                }
+            });
+        </script>
+    </body>
+</html>
