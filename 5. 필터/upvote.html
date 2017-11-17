@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>Upvote!</title>
+        <meta charset="utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style>
+            html, body{
+                width:100%;
+                height:100%;
+                margin:0;
+                padding:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "container">
+            <h1>Let's hear some famous stories! ({{ famous.length }})</h1>
+            <ul>
+                <li v-for = "story in famous">
+                    {{ story.writer }} said "{{ story.plot }}" and upvoted {{ story.upvotes }} times.
+                </li>
+            </ul>
+        </div>
+        <script type = "text/javascript">
+            new Vue({
+                el : '#container',
+                data : {
+                    storyArr : [
+                        {
+                            writer : "정윤재",
+                            plot : "I don't know what to do!",
+                            upvotes : 100
+                        },
+                        {
+                            writer : "김용현",
+                            plot : "Hello, I'm cute.",
+                            upvotes : 71
+                        },
+                        {
+                            writer : "김철수",
+                            plot : "I'm an iron number..",
+                            upvotes : 52
+                        },
+                        {
+                            writer : "나훈이",
+                            plot : "Me hoon 2",
+                            upvotes : 10
+                        }
+                    ]
+                },
+                computed : {
+                    famous : function() {
+                        return this.storyArr.filter(function(num){
+                            return num.upvotes > 30;
+                        })
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
