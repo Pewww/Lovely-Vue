@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>sort</title>
+        <meta charset="utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style>
+            html, body{
+                width:100%;
+                height:100%;
+                margin:0;
+                padding:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "app">
+            <h1>Let's hear some stories!</h1>
+            <ul>
+                <li v-for = "story in storyArr">
+                    {{ story.writer }} said "{{ story.plot }}" and upvoted {{ story.upvotes }} times.
+                </li>
+            </ul>
+            <button @click = "order = order * -1">Reverse the result!</button>
+        </div>
+        <script type = "text/javascript">
+            new Vue({
+                el : '#app',
+                data : {
+                    stories : [
+                        {
+                            writer : "name1",
+                            plot : "Hello",
+                            upvotes : 30
+                        },
+                        {
+                            writer : "name2",
+                            plot : "Vinus",
+                            upvotes : 40
+                        },
+                        {
+                            writer : "name3",
+                            plot : "Nice to see",
+                            upvotes : 20
+                        }
+                    ],
+                    order : -1
+                },
+                computed : {
+                    storyArr : function() {
+                        let order = this.order;
+                        return this.stories.sort(function (a, b){
+                            return (a.upvotes - b.upvotes) * order;
+                        })
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
