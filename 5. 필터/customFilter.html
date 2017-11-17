@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>customFilter</title>
+        <meta charset = "utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style>
+            html, body{
+                width:100%;
+                height:100%;
+                margin:0;
+                padding:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "container">
+            <h1>Custom-Filter Example</h1>
+            <ul>
+                <li v-for = "hero in heroes">
+                    {{ hero | snitch }}
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            Vue.filter('snitch', function(hero) {
+                return hero.secretId + ' is '
+                     + hero.firstName + ' '
+                     + hero.lastName + ' in real life! '
+            });
+            
+            new Vue({
+                el : '#container',
+                data : {
+                    heroes : [
+                        { firstName : 'Bruce', lastName: 'Wayne', secretId: 'Batman' },
+                        { firstName : 'Clark', lastName: 'Kent', secretId: 'Superman' },
+                        { firstName : 'Jay', lastName: 'Garrick', secretId: 'Flash' },
+                        { firstName : 'Peter', lastName: 'Parker', secretId: 'Spider-Man' }
+                    ]
+                }
+            })
+        </script>
+    </body>
+</html>
