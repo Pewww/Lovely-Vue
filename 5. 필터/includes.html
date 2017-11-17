@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>Includes</title>
+        <meta charset="utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style>
+            html, body{
+                width:100%;
+                height:100%;
+                margin:0;
+                padding:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "app">
+            <h1>Let's hear some stories!</h1>
+            <div>
+                <div class = "form-cover">
+                    <label for="query">
+                        What are you looking for?
+                    </label>
+                    <input v-model = "query">
+                </div>
+                <h3>Search Results: </h3>
+                <ul>
+                    <li v-for = "story in search">
+                        {{ story.writer }} said "{{ story.plot }}"
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script type = "text/javascript">
+            new Vue({
+                el : '#app',
+                data : {
+                    stories : [
+                        {
+                            writer : "John",
+                            plot : "I crashed my car today!"
+                        },
+                        {
+                            writer : "John",
+                            plot : "I ate someone's chocolate!"
+                        },
+                        {
+                            writer : "Alex",
+                            plot : "Yesterday, someone kissed me!"
+                        },
+                        {
+                            writer : "Alex",
+                            plot : "Hello, My name is Mr.James..!"
+                        }
+                    ],
+                    query : ' '
+                },
+                computed : {
+                    search : function() {
+                        let query = this.query;
+                        return this.stories.filter(function(story) {
+                            return story.plot.includes(query);
+                        });
+                    }
+                },
+                methods : {
+                    storiesBy : function(writer){
+                        return this.stories.filter(function(story){
+                            return story.writer === writer;
+                        })
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
