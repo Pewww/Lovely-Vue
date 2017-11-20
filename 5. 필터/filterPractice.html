@@ -1,0 +1,66 @@
+<html>  
+    <head>
+        <title>FilterPractice</title>
+        <meta charset="utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style>
+            html, body{
+                width:100%;
+                height:100%;
+                margin:0;
+                padding:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "app">
+            <h1>People of Gaul</h1>
+            <ul>
+                <li v-for = "human in humans">
+                    {{human.name}} - {{human.age}}
+                </li>
+            </ul>
+            <hr>
+
+            <h1>People of Gaul</h1>
+            <ul>
+                <li v-for = "human in checkHuman">
+                    {{human.name}} - {{human.age}}
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            new Vue({
+                el : '#app',
+                data : {
+                    humans : [
+                        {
+                            name : 'Obelix',
+                            age : 31
+                        },
+                        {
+                            name : 'Asterix',
+                            age : 32
+                        },
+                        {
+                            name : 'Julius Caesar',
+                            age : 56
+                        },
+                        {
+                            name : 'Majestix',
+                            age : 62
+                        }
+                    ]
+                },
+                computed : {
+                    checkHuman : function() {
+                        return this.humans.filter(function(humanNum) {
+                            return humanNum.age > 45;
+                        })
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
