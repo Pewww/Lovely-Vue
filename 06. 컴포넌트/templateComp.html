@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>TemplateComp</title>
+        <meta charset="utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style>
+            html, body{
+                width:100%;
+                height:100%;
+                margin:0;
+                padding:0;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id = "app">
+            <story v-bind:story = "{plot : 'My house is really big!',
+                                    writer : 'Mr.DongHyun'}">
+            </story>
+            <story v-bind:story = "{plot : 'Thank you and Good night!',
+                                    writer : 'Juddy'}">
+            </story>
+            <story v-bind:story = "{plot : 'Hello from the other side~',
+                                    writer : 'Adel'}">
+            </story>
+        </div>
+        <template id = "story-template">
+            <h1>{{ story.writer }} said "{{ story.plot }}"</h1>
+        </template>
+        <script type = "text/javascript">
+            Vue.component('story', {
+                props : ['story'],
+                template : "#story-template"
+            });
+
+            new Vue({
+                el : '#app'
+            })
+        </script>
+    </body>
+</html>
