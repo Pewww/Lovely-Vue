@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <title>Just Test Of Vote System</title>
+        <meta charset="utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style>
+            html, body{
+                width:100%;
+                height:100%;
+                margin:0;
+                padding:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "app">
+            <div class = "container">
+                <h1>Let's hear some stories!</h1>
+                <ul>
+                    <story v-for = "story in stories"
+                           :story = "story"
+                           :favorite = "favorite">
+                    </story>
+                </ul>
+            </div>
+        </div>
+        <template id = "story-template">
+            <li>
+                {{ story.writer }} said "{{ story.plot }}".
+                Story upvotes {{ story.upvotes }}.
+                <button v-show = "!story.voted" @click = "upvote">
+                    Upvote
+                </button>
+                <button v-show = "!isFavorite" @click = "setFavorite">
+                    Favorite
+                </button>
+                <span v-show = "isFavorite" aria-hidden="true">
+
+                </span>
+            </li>
+        </template>
+
+        <script type = "text/javascript">
+            Vue.component('story', {
+                template : '#story-template',
+                props : ['story'],
+                methos : {
+                    upvote : function() {
+                        this.story.upvotes += 1;
+                        this.story.voted = true;
+                    },
+
+                    setFavorite : function(){
+                        this.favorite = this.story;
+                    }
+                },
+                computed : {
+                    isFavorite : function() {
+                        return this.story == this.favorite;
+                    }
+                }
+            });
+
+            new Vue({
+                el : '#app',
+                data : {
+                    stories : [
+                        {
+                            plot : "Hello",
+                            writer : "Mr.One",
+                            upvotes: 28,
+                            voted : false
+                        },
+                        {
+                            plot : "Nice to meet you",
+                            writer : "Mr.Two",
+                            upvotes: 8,
+                            voted : false
+                        },
+                        {
+                            plot : "I'm going crazy",
+                            writer : "Mr.Three",
+                            upvotes: 41,
+                            voted : false
+                        },
+                        {
+                            plot : "I'm happy",
+                            writer : "Mr.Four",
+                            upvotes: 31,
+                            voted : false
+                        }
+                    ]
+                },
+                methods : {
+                    upvote : function() {
+                        this.story.upvotes += 1;
+                        this.story.voted = true;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
