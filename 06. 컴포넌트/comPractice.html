@@ -48,7 +48,8 @@
                 <button v-show = "canBevisited" @click = "choosePlanet">
                     choose
                 </button>
-                <span v-show = "planet.number_of_visits > 0" aria-hidden="true">
+                <span v-show = "planet.number_of_visits == 3" aria-hidden="true">
+                    <img src = "airplane.png" alt = "airplaneImg" style = "width:1.5rem">
                 </span>
             </li>
         </template>
