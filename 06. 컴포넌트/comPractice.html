@@ -45,7 +45,7 @@
         <template id = "planet-template">
             <li>
                 {{ planet.name }} visited {{ planet.number_of_visits }} time(s)!
-                <button v-show = "canBevisited" @click = "choosePlanet">
+                <button v-show = "canBeVisited" @click = "choosePlanet">
                     choose
                 </button>
                 <span v-show = "planet.number_of_visits == 3" aria-hidden="true">
@@ -63,7 +63,7 @@
                     }
                 },
                 computed : {
-                    canBevisited : function() {
+                    canBeVisited : function() {
                         return this.planet.number_of_visits < 3;
                     }
                 }

@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>Vote Event</title>
+        <meta charset="utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style media = "screen" type = "text/css">
+            html, body{
+                width:100%;
+                height:100%;
+                margin:0;
+                padding:0;
+            }
+
+            *{
+                outline:none;
+            }
+
+            p{
+                text-align: center;
+                font-size:10rem;
+            }
+
+            button{
+                display:block;
+                width:5rem;
+                height:3rem;
+                border:0;
+                border-radius: 5px;
+                margin:0 auto;
+                box-shadow: 0 0 4px darkgray;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                font-size:1rem;
+                cursor:pointer;
+                transition:0.5s;
+            }
+
+            button:focus{
+                transform: rotate(360deg);
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "container">
+            <p>
+                {{ votes }}
+            </p>
+            <button @click = "vote">
+                Vote
+            </button>
+        </div>
+
+        <script type = "text/javascript">
+            new Vue({
+                el : '#container',
+                data : {
+                    votes : 0
+                },
+                methods : {
+                    vote : function(writer){
+                        console.log("Value : " + writer);
+                        this.$emit('voted');
+                    }
+                },
+                created() {
+                    this.$on('voted', function(btn) {
+                        console.log("Value2 : " + btn);
+                        this.votes++;
+                    });
+                }
+            })
+        </script>
+    </body>
+</html>
