@@ -62,7 +62,7 @@ View Model이 <strong>생성되는</strong> 순간부터 생명주기, 즉 Life 
 로 볼 수 있다.
 <br><br>
 <b>참고 사진</b><br><br>
-<img src = "https://github.com/KoreanJungYJ/Lovely-Vue/00. Vue.js/imgs/vue_life_cycle.png" alt = "Vue_Life_Cycle_Img">
+<img src = "imgs/vue_life_cycle.png" alt = "Vue_Life_Cycle_Img">
 
 
 <br><br>
