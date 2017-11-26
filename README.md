@@ -1,4 +1,3 @@
-# Lovely-Vue
 <h2>Vue.js란?</h2>
 2014년 처음 릴리즈를 시작으로 꾸준히 발전하고 있는 자바스크립트 프레임워크이다.
 <br><br>
@@ -62,10 +61,43 @@ View Model이 <strong>생성되는</strong> 순간부터 생명주기, 즉 Life 
 <li>destroyed : 자식 컴포넌트, 이벤트 리스너의 해제</li>
 로 볼 수 있다.
 <br><br>
+이것을 더욱 자세하게 나눠보면,
+<ul>
+    <li>
+        beforeCreate : 인스턴스가 초기화된 후 데이터 감시 및 이벤트/감시자를 설정하기 전 
+    </li>
+    <li>
+        created : 인스턴스가 생성되고 난 후
+    </li>
+    <li>
+        beforeMount : 마운트가 시작되기 직전
+    </li>
+    <li>
+        mounted : 인스턴스가 이제 막 DOM에 마운트된 직후
+    </li>
+    <li>
+        beforeUpdate : 데이터 변경 시 가상 DOM이 다시 렌더링되고 패치되기 전
+    </li>
+    <li>
+        updated : 데이터가 변경된 후 가상 DOM이 다시 렌더링되고 패치된 후
+    </li>
+    <li>
+        activated : <b>keep-alive</b>상태의 컴포넌트가 활성화될 때
+    </li>
+    <li>
+        deactivated : <b>keep-alive</b>상태의 컴포넌트가 비활성화될 때
+    </li>
+    <li>
+        beforeDestroy : Vue 인스턴스가 파괴되기 직전
+    </li>
+    <li>
+        destroyed : Vue 인스턴스가 파괴된 후
+    </li>
+</ul>로 나눌 수 있다.
+<br><br>
 <b>참고 사진</b><br><br>
-<img src = "0. Vue.js/imgs/vue life cycle.png">
+<img src = "00. Vue.js/imgs/vue_life_cycle.png" alt = "Vue_Life_Cycle_Img">
 
 
 <br><br>
-(아직_설명은_미완성임_이점_양해_부탁)
-
+설명은 아직 미완성입니다!
