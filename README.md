@@ -62,6 +62,7 @@ View Model이 <strong>생성되는</strong> 순간부터 생명주기, 즉 Life 
 로 볼 수 있다.
 <br><br>
 이것을 더욱 자세하게 나눠보면,
+<br>
 <ul>
     <li>
         beforeCreate : 인스턴스가 초기화된 후 데이터 감시 및 이벤트/감시자를 설정하기 전 
