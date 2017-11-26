@@ -24,16 +24,15 @@
                 <food @voted = "countVote" name = "Double Bacon Burger"></food>
                 <food @voted = "countVote" name = "Chicken"></food>
             </div>
-
-            <template id = "food">
-                <div class = "center">
-                    <p>
-                        {{ votes }}
-                    </p>
-                    <button @click = "vote"> {{ name }} </button>
-                </div>
-            </template>
         </div>
+        <template id = "food">
+            <div class = "center">
+                <p>
+                    {{ votes }}
+                </p>
+                <button @click = "vote"> {{ name }} </button>
+            </div>
+        </template>
 
         <script type = "text/javascript">
             Vue.component('food', {
