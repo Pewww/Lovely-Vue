@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Multiple Votes</title>
+        <meta charset="utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style>
+            html, body{
+                width:100%;
+                height:100%;
+                margin:0;
+                padding:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "app">
+            <p>
+                {{ votes }}
+            </p>
+
+            <div class = "row">
+                <food @voted = "countVote" name = "CheeseBurger"></food>
+                <food @voted = "countVote" name = "Double Bacon Burger"></food>
+                <food @voted = "countVote" name = "Chicken"></food>
+            </div>
+
+            <template id = "food">
+                <div class = "center">
+                    <p>
+                        {{ votes }}
+                    </p>
+                    <button @click = "vote"> {{ name }} </button>
+                </div>
+            </template>
+        </div>
+
+        <script type = "text/javascript">
+            Vue.component('food', {
+                template : '#food',
+                props : ['name'],
+                data : function() {
+                    return{
+                        votes : 0
+                    }
+                },
+                methods : {
+                    vote : function() {
+                        this.votes++;
+                        this.$emit('voted');
+                    }
+                }
+            });
+
+            new Vue({
+                el : "#app",
+                data : {
+                    votes : 0
+                },
+                methods : {
+                    countVote : function() {
+                        this.votes++;
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
