@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Binding Practice</title>
+        <meta charset="utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style>
+            html, body{
+                width:100%;
+                height:100%;
+                margin:0;
+                padding:0;
+            }
+
+            #container{
+                width:100%;
+                height:100%;
+
+                display:flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            input:nth-of-type(2){
+                margin-left:1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "container">
+            <input type = "color">
+            <input type = "text">
+        </div>
+        <script type = "text/javascript">
+            let container = document.getElementById('container');
+            let text = document.querySelector('input[type=text]');
+            let color = document.querySelector('input[type=color]');
+
+            text.onkeyup = (e) => {
+                container.style.backgroundColor = e.target.value;
+            }
+
+            color.onchange = (e) => {
+                container.style.backgroundColor = e.target.value;
+            }
+        </script>
+    </body>
+</html>
