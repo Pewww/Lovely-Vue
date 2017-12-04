@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>Binding Example</title>
+        <meta charset="utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style>
+            html, body{
+                width:100%;
+                height:100%;
+                margin:0;
+                padding:0;
+            }
+
+            .completed{
+                text-decoration: line-through;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "app">
+            <ul>
+                <li :class = "{'completed' : task.done}"
+                    :style = "styleObject"
+                    v-for = "task in tasks">
+                    {{ task.body }}
+                
+                    <button @click = "completeTask(task)">
+                        Just do it!
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <script type = "text/javascript">
+            new Vue({
+                el : '#app',
+                data : {
+                    tasks : [
+                        {
+                            body : "Number One",
+                            done : true
+                        },
+                        {
+                            body : "Number two",
+                            done : true
+                        },
+                        {
+                            body : "Number Three",
+                            done : false
+                        }
+                    ],
+                    styleObject : {
+                        fontSize : '50px'
+                    }
+                },
+                methods : {
+                    completeTask : function(task) {
+                        console.log(task);
+                        task.done = !task.done;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

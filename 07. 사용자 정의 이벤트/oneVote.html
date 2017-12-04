@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>OneVote</title>
+        <meta charset = "utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style>
+            html, body{
+                width:100%;
+                height:100%;
+                margin:0;
+                padding:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "container">
+            <p>
+                {{ votes }}
+            </p>
+            <food @voted="countVote" name="CheeseBurger"></food>
+        </div>
+        <template id = "food">
+            <button @click = "vote">
+                {{ name }}
+            </button>
+        </template>
+
+        <script type = "text/javascript">
+            Vue.component('food', {
+                template : '#food',
+                props : ['name'],
+                methods : {
+                    vote : function() {
+                        this.$emit('voted');
+                    }
+                }
+            }); 
+
+            new Vue({
+                el : '#container',
+                data : {
+                    votes : 0
+                },
+                methods : {
+                    countVote : function() {
+                        this.votes++;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

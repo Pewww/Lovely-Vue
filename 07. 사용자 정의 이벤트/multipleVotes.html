@@ -62,9 +62,10 @@
                     }
                 },
                 methods : {
-                    vote : function() {
+                    vote : function(event) {
+                        console.log(event);
                         this.votes++;
-                        this.$emit('voted');
+                        this.$emit('voted', event.srcElement.textContent);
                     }
                 }
             });
@@ -72,7 +73,7 @@
             new Vue({
                 el : "#app",
                 data : {
-                    votes : 0
+                    votes : 0,
                 },
                 methods : {
                     countVote : function() {
