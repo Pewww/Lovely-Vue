@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Question</title>
+        <meta charset= "utf-8">
+        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+        <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+
+        <style type="text/css">
+            html, body{
+                margin:0;
+                padding:0;
+
+                background-image:url(background.jpg);
+                background-attachment: fixed;
+                background-size:cover;
+                background-repeat:no-repeat;
+            }
+
+            p{
+                color:white;
+                font-family: 'Nanumsquare';
+                font-size:2.5rem;
+                font-weight:300;
+                margin-left:1rem;
+            }
+
+            p#answer{
+                text-decoration: underline;
+                margin-top:7rem;
+            }
+
+            input{
+                display:block;
+                border:0;
+                border-radius:20px;
+                box-shadow: 0 0 4px gray inset;
+                width:32rem;
+                height:2.8rem;
+                margin-top:1.5rem;
+                font-size:1.5rem;
+                padding-lefT:0.75rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div id= "watch">
+            <p>
+                Yes/No 질문을 물어보세요!
+                <input v-model= "question">
+            </p>
+            <p id= "answer">
+                {{ answer }}
+            </p>
+        </div>
+
+        <script type= "text/javascript">
+            var watchVue = new Vue({
+                el: '#watch',
+                data: {
+                    question: '',
+                    answer: '질문을 해야 대답을 할 수 있어요!'
+                },
+                watch: {
+                    question: function(newQuestion){
+                        this.answer = '입력을 기다리는 중...',
+                        this.getAnswer()
+                    }
+                },
+                methods: {
+                    getAnswer: _.debounce(
+                        function() {
+                            if(this.question.indexOf('?') === -1){
+                                this.answer = '질문에 물음표를 항상 추가해주세요 :)'
+                                return
+                            }
+
+                            this.answer = "생각중..."
+                            var vm = this
+                            axios.get('https://yesno.wtf/api')
+                                .then(function (response) {
+                                    vm.answer = _.capitalize(response.data.answer)
+                                })
+                                .catch(function (err){
+                                    vm.answer = '통신 오류 : ' + err
+                                });
+                        }, 500
+                    )
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+    </head>
+    <body>
+        <div id= "app">
+            <p>처음 메시지: "{{ firstMessage }}"</p>
+            <p>바뀐 메시지: "{{ changedMessage() }}</p>
+
+        </div>
+
+        <script type= "text/javascript">
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    firstMessage: "2nd Revolution"
+                },
+                /*computed: {
+                    changedMessage: function(){
+                        return this.firstMessage.split('').reverse().join('');
+                    }
+                }
+                
+                firstMessage가 변경되지 않는 한, 계산된 속성인 changeMessage
+                에 대한 다중 접근은 함수를 다시 수행할 필요 없이 이전에 계산된 결과를
+                즉시 반환한다.
+
+                -> 항상 렌더링하지 않아도 된다는 의미같다.
+                
+                */
+                methods: {
+                    changedMessage: function(){
+                        return this.firstMessage.split('').reverse().join('');
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
