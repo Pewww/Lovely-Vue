@@ -45,6 +45,11 @@
                 @keyup.enter= "addNewTodo"
                 placeholder= "Add a todo"    
             >
+            <!-- 
+                newTodoText는 input의 value
+                enter키 눌렀을 시 addNewTodo 함수 실행
+            -->
+
             <ul>
                 <li
                     is= "todo-item"
@@ -53,6 +58,13 @@
                     :title= "todo.title"
                     @remove= "todos.splice(index, 1)"
                 ></li>
+
+                <!-- 
+                    todo-item 컴포넌트
+                    v-for로 todos 배열 안에 있는 목록 렌더링 - todo(value)와 index 2개 값 가져옴
+                    key는 todo의 id로 바인딩
+                    title은 todo의 title로 바인딩 - 후에 props써서 반복할 데이터 컴포넌트로 전달
+                -->
             </ul>
         </div>
 
@@ -65,6 +77,12 @@
                 </li>\
                 `,
                 props: ['title']
+
+                /*
+                    li에서 title 보여줌
+                    버튼 클릭시 remove 이벤트 발생시킴
+                    props로 title 전달 받음
+                */
             });
 
             new Vue({
@@ -93,13 +111,20 @@
                             this.todos.push({
                                 id: this.nextTodoId++,
                                 title: this.newTodoText
-                            })
+                            });
                         }else{
                             alert("No Blank!");
                         }
                         this.newTodoText = ''
                     }
                 }
+
+                /*
+                    input keyup 이벤트 - addNewTodo 메소드
+                    input 값은 newTodoText임
+                    값 안 비어있으면 todos 배열에 푸쉬한 후 title 및 4부터 id값 차례로 할당(?)
+                    보낸 후엔 텍스트 초기화
+                */
             });
         </script>
     </body>
