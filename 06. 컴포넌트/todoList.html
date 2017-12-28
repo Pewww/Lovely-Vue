@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TodoList Component</title>
+        <meta charset= "utf-8">
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+        <style type="text/css">
+            html, body{
+                margin:0;
+                padding:0;
+            }
+
+            input{
+                display:block;
+                margin:0 auto;
+                margin-top:5rem;
+                width:20rem;
+                height:2.6rem;
+                border:1px solid darkgray;
+                border-radius: 4px;
+                
+                font-size:0.95rem;
+                padding-left:0.5rem;
+            }
+
+            ul{
+                position:absolute;
+                left:50%;
+                transform:translateX(-50%);
+            }
+
+            ul li{
+                list-style: none;
+                text-align: left;
+                margin-top:2rem;
+                font-size:1.1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div id= "todo-list-example">
+            <input
+                v-model= "newTodoText"
+                @keyup.enter= "addNewTodo"
+                placeholder= "Add a todo"    
+            >
+            <ul>
+                <li
+                    is= "todo-item"
+                    v-for= "(todo, index) in todos"
+                    :key= "todo.id"
+                    :title= "todo.title"
+                    @remove= "todos.splice(index, 1)"
+                ></li>
+            </ul>
+        </div>
+
+        <script>
+            Vue.component('todo-item', {
+                template: `\
+                <li>\
+                    {{ title }}\
+                    <button @click= "$emit(\'remove\')">X</button>\
+                </li>\
+                `,
+                props: ['title']
+            });
+
+            new Vue({
+                el: '#todo-list-example',
+                data: {
+                    newTodoText: '',
+                    todos: [
+                        {
+                            id: 1,
+                            title: 'Learning Vue'
+                        },
+                        {
+                            id: 2,
+                            title: 'Learning Data-Structure'
+                        },
+                        {
+                            id: 3,
+                            title: 'Learning Javascript'
+                        }
+                    ],
+                    nextTodoId: 4
+                },
+                methods: {
+                    addNewTodo: function() {
+                        if(this.newTodoText !== ''){
+                            this.todos.push({
+                                id: this.nextTodoId++,
+                                title: this.newTodoText
+                            })
+                        }else{
+                            alert("No Blank!");
+                        }
+                        this.newTodoText = ''
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

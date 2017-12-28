@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+    </head>
+    <body>
+        <div id= "app">
+            <li v-for= "list in lists" :key= "list.id"> 
+                {{ list.message }}
+            </li>
+        </div>
+
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    lists: [
+                        {
+                            id: 'one',
+                            message: 'One'
+                        },
+                        {
+                            id: 'two',
+                            message: 'Two'
+                        },
+                        {
+                            id: 'three',
+                            message: 'Three'
+                        }
+                    ]
+                }
+            });
+        </script>
+    </body>
+</html>

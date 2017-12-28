@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+    </head>
+    <body>
+        <div id= "app">
+            <li v-for= "number in evenNumbers">
+                {{ number }}
+            </li>
+        </div>
+
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    numbers: [1, 2, 3, 4, 5]
+                },
+                computed: {
+                    evenNumbers: function(){
+                        return this.numbers.filter(function(num) {
+                            return num % 2 === 0;
+                        });
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+    </head>
+    <body>
+        <div id= "app">
+            <ol>
+                <li v-for= "(item, index) in infos">
+                    {{ item.message }} - {{ index }}
+                </li>
+            </ol>
+        </div>
+
+        <script type= "text/javascript">
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    infos: [
+                        { message: "One" },
+                        { message: "Two" },
+                        { message: "Three" }
+                    ]
+                }
+            });
+        </script>
+    </body>
+</html>
