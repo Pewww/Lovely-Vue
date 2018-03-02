@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+    </head>
+    <body>
+        <div id = "todo-copy">
+            <input 
+                v-model= "copyText"
+                placeholder= "Write down your message."
+                @keyup.enter= "saveText"   
+            >
+
+            <ul>
+                <li v-for= "(todo, index) in todos"
+                    is= "copy-component"
+                    :title= "todo.title"
+                    :key= "todo.id"
+                    @del= "todos.splice(index, 1)"
+                >
+                </li>
+            </ul>
+        </div>
+
+        <script>
+            Vue.component('copy-component', {
+                template: `\
+                <li>\
+                    {{ title }}\
+                    <button @click= "$emit(\'del\')">Delete</button>\
+                </li>\
+                `,
+                props: ['title']
+            });
+
+            new Vue({
+                el: '#todo-copy',
+                data: {
+                    copyText: '',
+                    todos: [
+                        {
+                            id: 1,
+                            title: '테스트 카피 1번'
+                        },
+                        {
+                            id: 2,
+                            title: '테스트 카피 2번'
+                        },
+                        {
+                            id: 3,
+                            title: '테스트 카피 3번'
+                        },
+                    ],
+                    nextId: 4
+                },
+                methods: {
+                    saveText: function(){
+                        this.todos.push({
+                            id: this.nextId++,
+                            title: this.copyText
+                        });
+                        alert("Successfully saved!");
+
+                        this.copyText = '';
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

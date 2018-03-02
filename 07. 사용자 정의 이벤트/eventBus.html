@@ -1,0 +1,39 @@
+<html>
+    <head>
+            <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js"></script>
+    </head>
+    <body>
+        <div id= "app">
+            <child-component />
+        </div>
+        <script>
+            var eventBus = new Vue();
+
+            Vue.component('child-component', {
+                data() {
+                    return {
+                        value: 0
+                    }
+                },
+                template: `<div>\
+                                하위 컴포넌트 영역입니다.\
+                                <button @click= "showLog">show</button>\
+                           </div>`,
+                methods: {
+                    showLog() {
+                        eventBus.$emit('triggerEventBus', this.value += 100);
+                    }
+                }
+            })
+
+            new Vue({
+                el: '#app',
+                created() {
+                    eventBus.$on('triggerEventBus', function(val) {
+                        console.log("전달받은 값: " + val);
+                    });
+                }
+            })
+        </script>
+    </body>
+</html>

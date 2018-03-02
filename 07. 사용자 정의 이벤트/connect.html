@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js"></script>
+    </head>
+    <body>
+        <div id= "app">
+            <child-component @show-log= "printText" />
+        </div>
+        <script>
+            Vue.component('child-component', {
+                template: '<button @click= "showLog">show</button>',
+                methods: {
+                    showLog() {
+                        this.$emit('show-log');
+                    }
+                }
+            });
+            new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello Vue!'
+                },
+                methods: {
+                    printText() {
+                        console.log("Received an event!");
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

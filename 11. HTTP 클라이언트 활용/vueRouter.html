@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <script src= "https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+        <script src= "https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+    </head>
+    <body>
+        <!-- 
+            1. 각 <router-link />는 화면 상에서 Main 컴포넌트로 이동, 
+            Login 컴포넌트로 이동이라는 a 버튼 태그로 변환되어 표시된다.
+
+            2. 각 버튼을 클릭하면 to= ""에 정의된 텍스트 값이 브라우저 URL 끝에! 추가된다.
+            (여기서는 /main과 /login의 2개의 URL이 끝에 추가된다.)
+
+            3. <router-view>는 갱신된 URL에 해당되는 화면을 보여주는 영역이다.
+            스크립트에서 정의한다.
+            
+            4. routes 변수에는 URL의 값이 /main일 때 Main 컴포넌트를,
+            /login일 때 Login 컴포넌트를 표시하도록 정의한다.
+
+            5. router 변수에는 뷰 라우터를 하나 생성하고, 
+            routes를 삽입해 URL에 따라 화면이 변환될 수 있게 정의한다.
+
+            6. 마지막은 새 인스턴스를 생성하고 라우터의 정보가 담긴 router를 추가하는 코드이다.
+            .$mount()는 el 속성과 동일하게 인스턴스를 화면에 붙여주는 역할을 한다.
+
+            * 참고로 뷰 라우터의 공식 문서는 모두 인스턴스 안에 el을 지정하지 않고 라우터만 지정하여
+            생성한 다음, 생성된 인스턴스를 $mount()를 이용해 붙이는 식으로 안내하고 있다!
+        -->
+        <div id= "app">
+            <h1>The Example of Vue Router</h1>
+            <p>
+                <router-link to= "/main">Main 컴포넌트로 이동</router-link>
+                <router-link to= "/login">Login 컴포넌트로 이동</router-link>
+            </p>
+            <router-view></router-view>
+        </div>
+        <script>
+            var Main = {
+                template: '<div>main</div>'
+            };
+            var Login = {
+                template: '<div>login</div>'
+            };
+
+            var routes = [
+                {
+                    path: '/main',
+                    component: Main
+                },
+                {
+                    path: '/login',
+                    component: Login
+                }
+            ];
+
+            var router = new VueRouter({
+                routes
+            });
+
+            var app = new Vue({
+                router
+            }).$mount('#app');
+        </script>
+    </body>
+</html>

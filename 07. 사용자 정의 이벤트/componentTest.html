@@ -1,0 +1,32 @@
+<html>
+    <head>
+            <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js"></script>
+    </head>
+    <body>
+        <div id= "app">
+            <child-component :propsdata= "message"></child-component>
+            <sibling-component :propsdata= "anotherMessage"></sibling-component>
+        </div>
+        <script type= "text/javascript">
+            Vue.component('child-component', {
+                props: ['propsdata'],
+                template: '<h1>{{ propsdata }}</h1>'
+            });
+
+            Vue.component('sibling-component', {
+                props: ['propsdata'],
+                template: '<h2>{{ propsdata }}</h2>'
+            });
+
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        message: `Hello Vue! It's the first!`,
+                        anotherMessage: 'Hi. It is second'
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
