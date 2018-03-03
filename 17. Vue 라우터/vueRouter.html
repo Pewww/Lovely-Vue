@@ -27,19 +27,16 @@
             생성한 다음, 생성된 인스턴스를 $mount()를 이용해 붙이는 식으로 안내하고 있다!
         -->
         <div id= "app">
-            <h1>The Example of Vue Router</h1>
-            <p>
-                <router-link to= "/main">Main 컴포넌트로 이동</router-link>
-                <router-link to= "/login">Login 컴포넌트로 이동</router-link>
-            </p>
-            <router-view></router-view>
+            <h1>뷰 라우터 예제</h1>
+            <router-link to= "/main">Main 컴포넌트로 이동</router-link>
+            <router-link to= "/login">Login 컴포넌트로 이동</router-link>
         </div>
         <script>
             var Main = {
-                template: '<div>main</div>'
+                template: '<div>Main</div>'
             };
             var Login = {
-                template: '<div>login</div>'
+                template: '<div>Login</div>'
             };
 
             var routes = [

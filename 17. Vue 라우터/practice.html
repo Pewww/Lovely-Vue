@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <script src= "https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+        <script src= "https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+        <style>
+            html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            h1 {
+                text-align: center;
+            }
+
+            a {
+                text-decoration: none;
+                display: block;
+                text-align: center;
+                padding-top: 2rem;
+            }
+
+            h2, h3 {
+                text-align: center;
+                font-weight: normal;
+                font-size: 4rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin-top: 1rem;
+            }
+
+            input {
+                display: block;
+                width: 80%;
+                height: 2.5rem;
+                min-width: 200px;
+                margin: 0 auto;
+                margin-top: 0.5rem;
+                padding-left: 0.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div id= "app">
+            <h1>뷰 라우터 예제</h1>
+            <p>
+                <router-link to= "/main">Move to Main-Component</router-link>
+                <router-link to= "/login">Move to Login-Component</router-link>
+            </p>
+            <router-view></router-view>
+        </div>
+        <script>
+            var Main = {
+                template: `
+                    <div>
+                        <h2>Main</h2>
+                        <h3>Welcome!</h3>
+                    </div>
+                `
+            };
+            var Login = {
+                template: `
+                    <div>
+                        <h2>Login2</h2>
+                        <input type= "text" placeholder= "아이디를 입력해주세요.">
+                        <input type= "password" placeholder= "비밀번호를 입력해주세요.">
+                    </div>
+                `
+            };
+
+            var routes = [
+                {
+                    path: '/main',
+                    component: Main
+                },
+                {
+                    path: '/login',
+                    component: Login
+                }
+            ];
+
+            var router = new VueRouter({
+                routes
+            });
+
+            var app = new Vue({
+                router
+            }).$mount('#app');
+        </script>
+    </body>
+</html>
