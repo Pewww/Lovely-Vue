@@ -32,6 +32,10 @@ export default {
     font-family: 'ubuntu';
   }
 
+  span {
+    cursor: pointer;
+  }
+
   input {
     border-style: groove;
     width: 200px;

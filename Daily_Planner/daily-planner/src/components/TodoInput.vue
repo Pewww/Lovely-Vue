@@ -8,15 +8,29 @@
     <span class= "add-container" @click= "addTodo">
       <i class= "add-btn fa fa-plus" aria-hidden="true"></i>
     </span>
+
+    <modal v-if= "showModal" @close= "showModal=false">
+      <h3 slot= "header">경고</h3>
+      <span slot= "footer" @click= "showModal=false">
+        할 일을 입력해주세요.
+        <i class=" close-modal-btn fa fa-times" aria-hidden= "true"></i>
+      </span>
+    </modal>
   </div>
 </template>
 
 <script>
+import Modal from './Modal'
+
 export default {
   name: 'todo-input',
+  components: {
+    Modal
+  },
   data () {
     return {
-      newTodoItem: ''
+      newTodoItem: '',
+      showModal: false
     }
   },
   methods: {
@@ -25,6 +39,8 @@ export default {
         let itemVal = this.newTodoItem && this.newTodoItem.trim();
         this.$emit('addTodo', itemVal);
         this.clearInput();
+      }else {
+        this.showModal = !this.showModal;
       }
     },
     clearInput () {
@@ -61,6 +77,10 @@ export default {
 
   .add-btn {
     color: #FFFFFF;
+  }
+
+  .close-modal-btn {
+    color: #62acde;
   }
 </style>
 
