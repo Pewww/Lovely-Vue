@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <script src= "https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id= "app">
+            <h1 @click= "eventTest" v-if = "val">{{ uid }}</h1>
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data () {
+                    return {
+                        val: true,
+                        uid: 20
+                    }
+                },
+                methods: {
+                    eventTest (data) {
+                        alert(data);
+                    }
+                },
+                watch: {
+                    uid(val) {
+                        console.log(val);
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <script src= "https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+        <script src= "https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <div id= "app">
+            <button @click= "getData">GET DATA!</button>
+            <h1>{{ dataEx }}</h1>
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data () {
+                    return {
+                        dataEx: ''
+                    }
+                },
+                methods: {
+                    getData() {
+                        axios.get('https://raw.githubusercontent.com/joshua1988/doit-vuejs/master/data/demo.json')
+                        .then((response) => {
+                            let sampleData = (response.headers['content-type']).split('; ')[0];
+                            this.dataEx = sampleData;
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        })
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script src= "https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+        <script src= "https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script>
+    </head>
+    <body>
+        <div id= "app">
+            <button @click= "getData">데이터 가져오기</button>
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                methods: {
+                    getData() {
+                        this.$http.get('https://raw.githubusercontent.com/joshua1988/doit-vuejs/master/data/demo.json')
+                        .then((response) => {
+                            console.log(response);
+                            console.log(JSON.parse(response.data));
+                        })
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
