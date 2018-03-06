@@ -26,6 +26,7 @@ export default {
     border-radius: 5px;
     margin: 0 auto;
     margin-top: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   .clear-all-btn {
