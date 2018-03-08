@@ -4,25 +4,23 @@
     </head>
     <body>
         <div id= "app">
-            <child-component @show-log= "printText" />
+            <child-component @Cracker= "nowMethod"></child-component>
         </div>
         <script>
             Vue.component('child-component', {
-                template: '<button @click= "showLog">show</button>',
+                template: '<button @click= "emitLog">Click it!</button>',
                 methods: {
-                    showLog() {
-                        this.$emit('show-log');
+                    emitLog () {
+                        this.$emit('Cracker');
                     }
                 }
             });
-            new Vue({
+
+            var vm = new Vue({
                 el: '#app',
-                data: {
-                    message: 'Hello Vue!'
-                },
                 methods: {
-                    printText() {
-                        console.log("Received an event!");
+                    nowMethod () {
+                        alert("Clicked");
                     }
                 }
             })
