@@ -4,23 +4,34 @@
     </head>
     <body>
         <div id= "app">
-            <child-component @Cracker= "nowMethod"></child-component>
+            <child-component :propsdata= "message" @cracker= "nowMethod"></child-component>
         </div>
         <script>
             Vue.component('child-component', {
-                template: '<button @click= "emitLog">Click it!</button>',
+                template: '<button @click= "emitLog">Click it! {{ propsdata }}</button>',
+                props: ['propsdata'],
+                data () {
+                    return {
+                        num: 3
+                    }
+                },
                 methods: {
                     emitLog () {
-                        this.$emit('Cracker');
+                        this.$emit('cracker', this.num);
                     }
                 }
             });
 
             var vm = new Vue({
                 el: '#app',
+                data () {
+                    return {
+                        message: "Hello"
+                    }
+                },
                 methods: {
-                    nowMethod () {
-                        alert("Clicked");
+                    nowMethod (data) {
+                        alert("Clicked" + data);
                     }
                 }
             })

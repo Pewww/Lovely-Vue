@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js"></script>
+    </head>
+    <body>
+        <div id= "app">
+            {{ message }}
+        </div>
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data () {
+                    return {
+                        message: 'Not yet'
+                    }
+                },
+                methods: {
+                    updateMessage () {
+                        this.message = 'Now!'
+                        console.log(this.$el.textContent);
+                        this.$nextTick(function () {
+                            console.log(this.$el.textContent);
+                        })
+                    }
+                },
+                mounted () {
+                    this.updateMessage()
+                }
+            })
+        </script>
+    </body>
+</html>
