@@ -1,0 +1,29 @@
+<html>
+    <head>
+      <title>CheckBox</title>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+      </script>
+    </head>
+    <body>
+      <div id="app">
+        <h1>Choose</h1>
+        <input type="checkbox" value="1" v-model="fruits">사과,
+        <input type="checkbox" value="2" v-model="fruits">키위,
+        <input type="checkbox" value="3" v-model="fruits">포도,
+        <input type="checkbox" value="4" v-model="fruits">수박,
+        <input type="checkbox" value="5" v-model="fruits">참외
+
+        <h2>What you choose: {{ fruits }}</h2>
+      </div>
+      <script>
+        const vm = new Vue({
+          el: '#app',
+          data () {
+            return {
+              fruits: []
+            }
+          }
+        })
+      </script>
+    </body>
+</html>

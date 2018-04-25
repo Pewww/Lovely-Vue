@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <title>Filter-Table</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <p>
+        국가명: <input type="text" placeholder="국가명" v-model="country">
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>국가명</th>
+            <th>수도</th>
+            <th>지역</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="list in filterList" :key="list.no">
+            <td>{{ list.no }}</td>
+            <td>{{ list.name }}</td>
+            <td>{{ list.capital }}</td>
+            <td>{{ list.region }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      const vm = new Vue({
+        el: '#app',
+        data () {
+          return {
+            country: '',
+            countries: [
+              {no:1, name: 'America', capital: '워싱턴DC', region: 'america'},
+              {no:2, name: 'France', capital: '워싱턴DC', region: 'america'},
+              {no:3, name: 'United Kingdom', capital: '워싱턴DC', region: 'america'},
+              {no:4, name: 'China', capital: '워싱턴DC', region: 'america'},
+              {no:5, name: 'Taiguk', capital: '워싱턴DC', region: 'america'},
+              {no:6, name: 'Moroco', capital: '워싱턴DC', region: 'america'},
+              {no:7, name: 'Raos', capital: '워싱턴DC', region: 'america'},
+              {no:8, name: 'Vietnam', capital: '워싱턴DC', region: 'america'},
+              {no:9, name: 'Pigi', capital: '워싱턴DC', region: 'america'},
+              {no:10, name: 'Solomon Island', capital: '워싱턴DC', region: 'america'},
+              {no:11, name: 'Zameica', capital: '워싱턴DC', region: 'america'},
+              {no:12, name: 'Namivia', capital: '워싱턴DC', region: 'america'},
+              {no:13, name: 'Dongtimor', capital: '워싱턴DC', region: 'america'},
+              {no:14, name: 'Mexico', capital: '워싱턴DC', region: 'america'},
+              {no:15, name: 'Benesuela', capital: '워싱턴DC', region: 'america'}
+            ]
+          }
+        },
+        computed: {
+          filterList () {
+            let countryName = this.country.trim();
+            return this.countries.filter(v => {
+              return v.name.includes(countryName);
+            });
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

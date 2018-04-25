@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+        </script>
+    </head>
+    <body>
+        <div id="app">
+            <input type="text" v-model="num">
+            <br>
+            <span>{{ sum }}</span>
+        </div>
+        <script>
+            const vm = new Vue({
+                el: '#app',
+                data () {
+                    return {
+                        num: 0
+                    }
+                },
+                computed: {
+                    sum () {
+                        let num = Number(this.num);
+                        if(Number.isNaN(num) || num < 1) return 0;
+                        return ((1 + num) * num) / 2;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

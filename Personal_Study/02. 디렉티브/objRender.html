@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <select name="regions" id="regions">
+        <option disabled="disabled" selected>지역을 선택하세요.</option>
+        <option v-for="(val, key) in regions" :value="key">
+          {{ val }}
+        </option> 
+      </select>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: '#app',
+        data () {
+          return {
+            regions: {
+              'A' : 'Asia',
+              'B' : 'America',
+              'C' : 'Europe',
+              'D' : 'Africa',
+              'E' : 'Oceania'
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
