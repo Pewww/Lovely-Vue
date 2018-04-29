@@ -1,0 +1,93 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+    </script>
+  </head>
+  <template id="listTemplate">
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>번호</th><th>이름</th><th>전화번호</th><th>주소</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="contact in contacts">
+            <td>{{ contact.no }}</td>
+            <td>{{ contact.name }}</td>
+            <td>{{ contact.tel }}</td>
+            <td>{{ contact.address }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </template>
+  <script>
+    Vue.component('contactlist-component', {
+      template: '#listTemplate',
+      props: {
+        contacts: { type: Array }
+      }
+    })
+  </script>
+  <body>
+    <div id="app">
+      <h1>예방 접종</h1>
+      <hr>
+      <h3>1차 대상자 : 5월 1~3일</h3>
+      <contactlist-component :contacts="list1"></contactlist-component>
+      <h3>2차 대상자 : 5월 13~15일</h3>
+      <contactlist-component :contacts="list2"></contactlist-component>
+    </div>
+
+    <script>
+      const vm = new Vue({
+        el: '#app',
+        data () {
+          return {
+            list1: [
+              {
+                no: 97,
+                name: 'Yunjae',
+                tel: '010-1234-5678',
+                address: 'Yong-In'
+              },
+              {
+                no: 56,
+                name: 'TuiEditor',
+                tel: '010-4455-6677',
+                address: 'Kimoti'
+              },
+              {
+                no: 14,
+                name: 'AngLi',
+                tel: '010-2299-9132',
+                address: 'Jjuing'
+              }
+            ],
+            list2: [
+              {
+                no: 38,
+                name: 'Yunjae2',
+                tel: '010-1234-5672',
+                address: 'Yong-I'
+              },
+              {
+                no: 51,
+                name: 'TuiEditor2',
+                tel: '010-4455-6672',
+                address: 'Kimoti2'
+              },
+              {
+                no: 12,
+                name: 'AngLi2',
+                tel: '010-2299-4242',
+                address: 'Jjuin2'
+              }
+            ]
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>GetJsonData</title>
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="data in jsonData"
+            :key="data.no"
+            v-if="jsonData && jsonData.length > 0">
+          {{ data.name }}
+          <br>
+          {{ data.tel }}
+        </li>
+      </ul>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: '#app',
+        data () {
+          return {
+            jsonData: []
+          }
+        },
+        mounted () {
+          axios.get('http://sample.bmaster.kro.kr/contacts/')
+          .then( response => {
+            const responseArr = response.data.contacts;
+            this.jsonData = responseArr;
+
+            console.log(responseArr);
+          })
+          .catch ( err => {
+            console.log(err);
+          })
+        }
+      })
+    </script>
+  </body>
+</html>

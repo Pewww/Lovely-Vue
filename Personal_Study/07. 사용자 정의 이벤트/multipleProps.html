@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <list-component :arr-data="listTest"></list-component>
+      </ul>
+    </div>
+    <script>
+      Vue.component('list-component', {
+        template: `<li>{{ arrData }}</li>`,
+        props: ['arrData']
+      });
+
+      const vm = new Vue({
+        el: '#app',
+        data () {
+          return {
+            listTest: 'Hello My name is yunjae'.split(' ')
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

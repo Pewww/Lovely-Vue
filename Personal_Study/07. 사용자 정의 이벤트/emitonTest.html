@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <child-component :propsdata="message" @emitfinished="alertMessage"></child-component>
+    </div>
+    <script>
+      Vue.component('child-component', {
+        template: '<h1 @click="emitevent">{{ propsdata }}</h1>',
+        props: {
+          propsdata: {
+            type: String
+          }
+        },
+        data () {
+          return {
+            val: 'get',
+            val2: 'value'
+          }
+        },
+        methods: {
+          emitevent () {
+            this.$emit('emitfinished', this.val, this.val2);
+          }
+        }
+      });
+
+      const vm = new Vue({
+        el: '#app',
+        data () {
+          return {
+            message: 'Hello!'
+          }
+        },
+        methods: {
+          alertMessage (k, v) {
+            alert(this.message + ', ' + k + ', ' + v);
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

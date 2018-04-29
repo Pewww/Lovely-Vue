@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <title>Input to Get Datas</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>
+        이름: <input type="text" v-model="name" placeholder="두 자 이상 입력해주세요.">
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>번호</th><th>이름</th><th>전화번호</th><th>주소</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="contact in contactList"
+              :key="contact.no">
+            <td>{{ contact.no }}</td>
+            <td>{{ contact.name }}</td>
+            <td>{{ contact.tel }}</td>
+            <td>{{ contact.address }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div v-show="isProcessing === true">조회중..</div>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: '#app',
+        data () {
+          return {
+            name: '',
+            contactList: [],
+            isProcessing: false
+          }
+        },
+        watch: {
+          name (val) {
+            if (val.length >= 2) {
+              this.getContacts();
+            } else {
+              this.contactList = [];
+            }
+          }
+        },
+        methods: {
+          getContacts: _.debounce(function (){
+            this.contactList = [];
+            this.isProcessing = true;
+            const getURL = `http://sample.bmaster.kro.kr/contacts_long/search/${this.name}`;
+
+            axios.get(getURL)
+            .then( response => {
+              this.contactList = response.data;
+              this.isProcessing = false;
+            })
+            .catch( err => {
+              console.log(err);
+              this.contactList = [];
+              this.isProcessing = false;
+            })
+          }, 300)
+        }
+      });
+    </script>
+  </body>
+</html>

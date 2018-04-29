@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <button :style="checkProperty ? myLayout : [ myColor, myLayout ]" 
+              @click="changeProperty"
+      >
+        버튼
+      </button>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: '#app',
+        data () {
+          return {
+            checkProperty: false,
+            myColor: {
+              backgroundColor: 'purple',
+              color: 'yellow'
+            },
+            myLayout: {
+              width: '150px',
+              height: '80px',
+              textAlign: 'center'
+            }
+          }
+        },
+        methods: {
+          changeProperty () {
+            this.checkProperty = !this.checkProperty;
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

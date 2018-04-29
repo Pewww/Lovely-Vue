@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+    </script>
+    <title>CheckBox-Class</title>
+    <meta charset="utf-8">
+    <style>
+      .set1 {
+        background-color: aqua;
+        color: purple;
+      }
+
+      .set2 {
+        text-align: center;
+        width: 120px;
+      }
+
+      .set3 {
+        border: sandybrown dashed 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <button :class="myStyle">버튼</button>
+      <p>
+        <input type="checkbox" v-model="myStyle.set1" value="true">Set1 디자인<br>
+        <input type="checkbox" v-model="myStyle.set2" value="true">Set2 디자인<br>
+        <input type="checkbox" v-model="myStyle.set3" value="true">Set3 디자인<br>
+      </p>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: '#app',
+        data () {
+          return {
+            myStyle: {
+              set1: false,
+              set2: false,
+              set3: false
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

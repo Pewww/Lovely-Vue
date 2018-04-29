@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+    </script>
+  </head>
+  <!-- childComponent -->
+  <template id="childTemplate">
+    <div>
+      <button @click="clickEvent"
+              :data-lang="buttonInfo.value"
+      >
+        {{ buttonInfo.text }}
+      </button>
+    </div>
+  </template>
+  <script>
+    Vue.component('child-component', {
+      template: '#childTemplate',
+      props: ['buttonInfo'],
+      methods: {
+        clickEvent ({ target }) {
+          this.$emit('timeClick', target.innerText, target.dataset.lang);
+        }
+      }
+    });
+  </script>
+  <!-- parentComponent -->
+  <template id="parentTemplate">
+    <div>
+      <child-component v-for="s in buttons"
+                       :button-info="s"
+                       @time-click="timeClickEvent">
+      </child-component>
+      <hr>
+      <div> {{ msg }} </div>
+    </div>
+  </template>
+  <script>
+    Vue.component('parent-component', {
+      template: '#parentTemplate',
+      props: ['buttons'],
+      data () {
+        return {
+          msg: ''
+        }
+      },
+      methods: {
+        timeClickEvent (k, v) {
+          this.msg = k + ', ' + v;
+        }
+      }
+    });
+  </script>
+  <body>
+    <div id="app">
+      <parent-component :buttons="buttons"></parent-component>
+    </div>
+    <script>
+      const vm = new Vue({
+        el: '#app',
+        data () {
+          return {
+            buttons: [
+              { text: '안녕', value: '한국어' },
+              { text: '니하오', value: '중국어' },
+              { text: '곤니찌와', value: '일본어' }
+            ]
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

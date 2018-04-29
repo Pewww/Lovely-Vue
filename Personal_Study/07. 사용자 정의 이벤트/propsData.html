@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <list-component :message='dataTest'></list-component>
+      </ul>
+    </div>
+    <script>
+      Vue.component('list-component', {
+        template: `<li>{{ message }}</li>`,
+        props: {
+          message: {type: String, default: 'Hello'}
+        }
+      })
+      const vm = new Vue({
+        el: '#app',
+        data () {
+          return {
+            dataTest: '안뇽'
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

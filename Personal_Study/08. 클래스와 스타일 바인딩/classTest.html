@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>Class-Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+    </script>
+    <style>
+      .warning {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <input type="number" v-model="num" :class="test">
+    </div>
+
+    <script>
+      const vm = new Vue({
+        el: '#app',
+        data () {
+          return {
+            num: 0
+          }
+        },
+        computed: {
+          test () {
+            if (this.num > 0 && this.num < 100) {
+              return {
+                warning: true
+              }
+            } else {
+              return {
+                warning: false
+              }
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
