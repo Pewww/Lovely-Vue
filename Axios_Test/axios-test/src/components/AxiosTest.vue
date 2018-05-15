@@ -109,7 +109,7 @@ export default {
       console.log('Clicked');
     },
     deleteContact () {
-      axios.delete(`/api/contacts/${this.no}`)
+      this.$http.delete(`/api/contacts/${this.no}`)
       .then(response => {
         console.log(response);
         this.no = 0;
