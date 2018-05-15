@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import ContactList from '@/components/ContactList/ContactList'
+import Todo from '@/components/SimpleTodo/Todo'
+import StyleModule from '@/components/Module/StyleModule'
+import Slot from '@/components/Module/Slot'
 
 Vue.use(Router)
 
@@ -10,6 +13,21 @@ export default new Router({
       path: '/',
       name: 'contact-list',
       component: ContactList
+    },
+    {
+      path: '/todo',
+      name: 'todo',
+      component: Todo
+    },
+    {
+      path: '/module',
+      name: 'module',
+      component: StyleModule
+    },
+    {
+      path: '/slot',
+      name: 'slot',
+      component: Slot
     }
   ]
 })

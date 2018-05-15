@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.js">
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <module-button />
+    </div>
+    <script>
+      Vue.component('module-button', {
+        created () {
+          console.log(this.$style);
+        }
+      })
+      new Vue({
+        el: '#app'
+      });
+    </script>
+  </body>
+</html>
