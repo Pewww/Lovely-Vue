@@ -1,12 +1,16 @@
 <template>
-  <div>
-
-  </div>
+  <contact-form mode="update" :contact="contact" />
 </template>
 
 <script>
+import ContactForm from './ContactForm'
+
 export default {
-  name: 'update-contact'
+  name: 'update-contact',
+  components: {
+    ContactForm
+  },
+  props: ['contact']
 }
 </script>
 

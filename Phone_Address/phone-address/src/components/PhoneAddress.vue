@@ -138,7 +138,7 @@ export default {
     },
 
     UpdateContact (contact) {
-      this.$http.put(CONF.UPDATE.replace(`${no}`, contact.no), contact)
+      this.$http.put(CONF.UPDATE.replace('${no}', contact.no), contact)
       .then(response => {
         this.fetchContacts();
       })
@@ -148,7 +148,7 @@ export default {
     },
 
     fetchContactOne (no) {
-      this.$http.get(CONF.FETCH_ONE.replace(`${no}`, no))
+      this.$http.get(CONF.FETCH_ONE.replace('${no}', no))
       .then(response => {
         this.contact = response.data;
       })
@@ -158,7 +158,7 @@ export default {
     },
 
     deleteContact (no) {
-      this.$http.delete(CONF.DELETE.replace(`${no}`, no))
+      this.$http.delete(CONF.DELETE.replace('${no}', no))
       .then(response => {
         this.fetchContacts();
       })
@@ -171,7 +171,7 @@ export default {
       let data = new FormData();
       data.append('photo', file);
       
-      this.$http.post(CONF.UPDATE_PHOTO.replace(`${no}`, no), data)
+      this.$http.post(CONF.UPDATE_PHOTO.replace('${no}', no), data)
       .then(response => {
         this.fetchContacts();
       })
