@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Constant from '../constant'
+import Constant from '../../constant'
 
 export default {
   name: 'input-todo',

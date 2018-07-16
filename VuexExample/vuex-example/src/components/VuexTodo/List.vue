@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Constant from '../constant'
+import Constant from '../../constant'
 import { mapState, mapMutations } from 'vuex'
 import _ from 'lodash'
 
@@ -34,6 +34,11 @@ export default {
     Constant.DELETE_TODO,
     Constant.DONE_TOGGLE 
   ]))
+  // 다른 이름으로 하고 싶을 경우
+  // mapMutations({
+  //   deleteTodo: Constant.DELETE_TODO,
+  //   doneToggle: Constant.DONE_TOGGLE 
+  // })
 }
 </script>
 
