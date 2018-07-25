@@ -4,6 +4,7 @@ import ContactList from '@/components/ContactList/ContactList'
 import Todo from '@/components/SimpleTodo/Todo'
 import StyleModule from '@/components/Module/StyleModule'
 import Slot from '@/components/Module/Slot'
+import CountryRegion from '@/components/Country/CountryRegion'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/slot',
       name: 'slot',
       component: Slot
+    },
+    {
+      path: '/region',
+      name: 'country-region',
+      component: CountryRegion
     }
   ]
 })

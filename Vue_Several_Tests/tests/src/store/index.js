@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import constant from '../Constant'
+import Constant from '../Constant'
 import _ from 'lodash'
 
 Vue.use(Vuex);
@@ -25,40 +25,28 @@ const store = new Vuex.Store({
       { no: 14, name: '베네수엘라', capital: '카라카스', region: 'America' },
       { no: 15, name: '서사모아', capital: '아피아', region: 'Oceania' },
       { no: 16, name: '프랑스', capital: '파리', region: 'Europe' }
-    ]
+    ], // 전체 나라들의 리스트
   },
-
   getters: {
     countriesByRegion (state) {
-      if (state.currentRegion === 'all') {
-        return state.countries;
-      } else {
-        // 이름에 맞는 것만 반환
-        return state.countries.filter(v => v.region === state.currentRegion);
-      }
+      if (state.currentRegion === 'all') return state.countries;
+      else return state.countries.filter(v => v.region === state.currentRegion);
     },
-
     regions (state) {
       let temp = state.countries.map(v => v.region);
-      console.log(temp);
-
       temp = _.uniq(temp);
-      console.log(temp);
-
-      temp.splice(0, 0, 'all');
-      console.log(temp);
+      temp.unshift('all');
 
       return temp;
     },
-
     currentRegion (state) {
       return state.currentRegion;
     }
   },
-
   mutations: {
-    [constant.CHANGE_REGION]: (state, payload) => {
+    [Constant.CHANGE_REGION]: (state, payload) => {
       state.currentRegion = payload.region;
+      console.log(state.currentRegion);
     }
   }
 });

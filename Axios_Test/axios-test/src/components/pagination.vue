@@ -40,6 +40,7 @@ export default {
   updated () {
     axios.get(uriData)
     .then(response => {
+      console.log(response);
       this.pageData = response.data.contacts
     })
     .catch(err => {
