@@ -16,9 +16,19 @@ export default {
   computed: mapGetters([
     'regions'
   ]),
-  methods: mapMutations([
-    Constant.CHANGE_REGION
-  ])
+  methods: {
+    ...mapMutations([
+      Constant.CHANGE_REGION
+    ])
+  }
+  /*
+  다음과 같음.
+  methods: {
+    changeRegion (val) {
+      this.$store.commit(Constant.CHANGE_REGION, val);
+    }
+  }
+  */
 }
 </script>
 

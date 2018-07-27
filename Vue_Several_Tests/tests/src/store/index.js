@@ -5,7 +5,7 @@ import _ from 'lodash'
 
 Vue.use(Vuex);
 
-const store = new Vuex.Store({
+const moduleA = {
   state: {
     currentRegion: 'all',
     countries: [
@@ -44,10 +44,17 @@ const store = new Vuex.Store({
     }
   },
   mutations: {
-    [Constant.CHANGE_REGION]: (state, payload) => {
+    [Constant.CHANGE_REGION]: (state, payload, rootState) => {
       state.currentRegion = payload.region;
       console.log(state.currentRegion);
+      console.log(rootState);
     }
+  }
+};
+
+const store = new Vuex.Store({
+  modules: {
+    a: moduleA
   }
 });
 
