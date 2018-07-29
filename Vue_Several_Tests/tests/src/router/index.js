@@ -7,8 +7,14 @@ import Slot from '@/components/Module/Slot'
 import CountryRegion from '@/components/Country/CountryRegion'
 import Contacts from '@/components/PhoneNumber/Contacts'
 import ContactByNo from '@/components/PhoneNumber/ContactByNo'
+import Page from '@/components/PhoneNumber/Page'
+import PageShow from '@/components/PhoneNumber/PageShow'
 
 Vue.use(Router)
+
+function connectNo (route) {
+  return { no: route.params.no };
+}
 
 export default new Router({
   routes: [
@@ -45,7 +51,25 @@ export default new Router({
         {
           path: ':no',
           name: 'contact-by-no',
-          component: ContactByNo
+          component: ContactByNo,
+          props: connectNo // 지금은 단순한 params 정보이므로 true를 써도 무방하다.
+          // 단순 params 정보가 아닌 query 정보 등이 속성에 부여되어야 한다면 라우트 정보를 함수 형태로 수정할 수 있다.
+        }
+      ]
+    },
+    {
+      path: '*',
+      redirect: '/'
+    },
+    {
+      path: '/page',
+      name: 'page',
+      component: Page,
+      children: [
+        {
+          path: ':no',
+          name: 'page-show',
+          component: PageShow
         }
       ]
     }

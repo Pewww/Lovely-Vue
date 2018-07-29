@@ -34,13 +34,10 @@ export default {
   name: 'contact-by-no',
   data () {
     return {
-      no: 0,
       contacts: contactList.contacts
     }
   },
-  created () {
-    this.no = this.$route.params.no;
-  },
+  props: ['no'],
   computed: {
     contact () {
       let no = this.no;
